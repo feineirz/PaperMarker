@@ -10,8 +10,8 @@
         g.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
-        Dim defaultPen As New Pen(Color.FromArgb(255, 200, 200, 200), 0.2)
-        Dim defaultBrush As New SolidBrush(Color.FromArgb(255, 200, 200, 200))
+        Dim defaultPen As New Pen(lblMarkerColorPreview.BackColor, 1)
+        Dim defaultBrush As New SolidBrush(lblMarkerColorPreview.BackColor)
 
         Dim paperSize As New Size(pdcMain.DefaultPageSettings.PaperSize.Width, pdcMain.DefaultPageSettings.PaperSize.Height) 'pixel
         Dim paperPadding As New Size(10 * factorMillimeterToPixel, 10 * factorMillimeterToPixel) 'pixel
@@ -74,6 +74,28 @@
                 Next
             Next
 
+        ElseIf patternType = "Grid" Then
+            Dim gridSpace As Integer = numGridSpace.Value * factorMillimeterToPixel
+            Dim gridCount As New Size(
+                Math.Floor(workingArea.Width / gridSpace),
+                Math.Floor(workingArea.Height / gridSpace))
+            Dim gridAdjustSpace As New Size(
+                (workingArea.Width - (gridCount.Width * gridSpace)) / 2,
+                (workingArea.Height - (gridCount.Height * gridSpace)) / 2)
+
+            For i = 0 To gridCount.Width
+                For j = 0 To gridCount.Height
+                    g.DrawLine(
+                        defaultPen,
+                        New Point(initPoint.X + gridAdjustSpace.Width, initPoint.Y + gridAdjustSpace.Height + (j * gridSpace)),
+                        New Point(initPoint.X + gridAdjustSpace.Width + (gridCount.Width * gridSpace), initPoint.Y + gridAdjustSpace.Height + (j * gridSpace)))
+                    g.DrawLine(
+                        defaultPen,
+                        New Point(initPoint.X + gridAdjustSpace.Width + (i * gridSpace), initPoint.Y + gridAdjustSpace.Height),
+                        New Point(initPoint.X + gridAdjustSpace.Width + (i * gridSpace), initPoint.Y + gridAdjustSpace.Height + (gridCount.Height * gridSpace)))
+                Next
+            Next
+
         End If
 
         e.HasMorePages = False
@@ -83,13 +105,15 @@
 
     Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
 
-        Dim printDialog As New PrintDialog()
-        printDialog.Document = pdcMain
-        printDialog.PrinterSettings = pdcMain.PrinterSettings
+        Dim dlgPrintSettings As New PrintDialog()
+        dlgPrintSettings.Document = pdcMain
+        dlgPrintSettings.PrinterSettings = pdcMain.PrinterSettings
 
-        If printDialog.ShowDialog = DialogResult.OK Then
+        If dlgPrintSettings.ShowDialog = DialogResult.OK Then
             tbxStatus.Text = "Paper Size: " & pdcMain.DefaultPageSettings.PaperSize.ToString() + vbCrLf + tbxStatus.Text
-            pdcMain.PrinterSettings = printDialog.PrinterSettings
+            pdcMain.PrinterSettings = dlgPrintSettings.PrinterSettings
+            pdcMain.OriginAtMargins = True
+            pdcMain.DefaultPageSettings.Margins = New Printing.Margins(0, 0, 0, 0)
             Try
                 pdcMain.Print()
                 tbxStatus.Text = "Printing successful." & vbCrLf & tbxStatus.Text
@@ -100,12 +124,13 @@
 
     End Sub
 
-    Private Sub rdbPatternType_CheckedChanged(sender As Object, e As EventArgs) Handles rdbPatternType_Line.CheckedChanged, rdbPatternType_Dot.CheckedChanged, rdbPatternType_Crosshair.CheckedChanged
+    Private Sub rdbPatternType_CheckedChanged(sender As Object, e As EventArgs) Handles rdbPatternType_Line.CheckedChanged, rdbPatternType_Dot.CheckedChanged, rdbPatternType_Crosshair.CheckedChanged, rdbPatternType_Grid.CheckedChanged
         Dim rdb As RadioButton = DirectCast(sender, RadioButton)
 
         pnlLineSettings.Enabled = False
         pnlDotSettings.Enabled = False
         pnlCrosshairSettings.Enabled = False
+        pnlGridSettings.Enabled = False
 
         If rdb.Checked Then
             Select Case rdb.Text
@@ -125,6 +150,10 @@
                     patternType = "Crosshair"
                     tbxStatus.Text = "Pattern Type: Crosshair [Mark size " & numCrossSize.Value & " mm., Mark space " & numCrossSpace.Value & " mm.]" & vbCrLf & tbxStatus.Text
                     pnlCrosshairSettings.Enabled = True
+                Case "Grid"
+                    patternType = "Grid"
+                    tbxStatus.Text = "Pattern Type: Grid [Grid space " & numGridSpace.Value & " mm.]" & vbCrLf & tbxStatus.Text
+                    pnlGridSettings.Enabled = True
             End Select
         End If
     End Sub
@@ -139,5 +168,18 @@
 
     Private Sub numCross_ValueChanged(sender As Object, e As EventArgs) Handles numCrossSize.ValueChanged, numCrossSpace.ValueChanged
         If rdbPatternType_Crosshair.Checked Then tbxStatus.Text = "Pattern Type: Crosshair [Mark size " & numCrossSize.Value & " mm., Mark space " & numCrossSpace.Value & " mm.]" & vbCrLf & tbxStatus.Text
+    End Sub
+
+    Private Sub numGridSpace_ValueChanged(sender As Object, e As EventArgs) Handles numGridSpace.ValueChanged
+        If rdbPatternType_Grid.Checked Then tbxStatus.Text = "Pattern Type: Grid [Grid space " & numGridSpace.Value & " mm.]" & vbCrLf & tbxStatus.Text
+    End Sub
+
+    Private Sub btnPickMarkerColor_Click(sender As Object, e As EventArgs) Handles btnPickMarkerColor.Click
+
+        Dim dlgColorPicker As New ColorDialog
+        If dlgColorPicker.ShowDialog = DialogResult.OK Then
+            lblMarkerColorPreview.BackColor = dlgColorPicker.Color
+        End If
+
     End Sub
 End Class
