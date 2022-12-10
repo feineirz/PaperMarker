@@ -10,6 +10,7 @@
         g.TextRenderingHint = Drawing.Text.TextRenderingHint.AntiAlias
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
+        Dim defaultFont = New Font("Tahoma", 16, FontStyle.Bold)
         Dim defaultPen As New Pen(lblMarkerColorPreview.BackColor, 1)
         Dim defaultBrush As New SolidBrush(lblMarkerColorPreview.BackColor)
 
@@ -21,13 +22,26 @@
         If patternType = "Line" Then
             Dim lineSpace As Integer = numLineSpace.Value * factorMillimeterToPixel
             Dim lineCount As Integer = Math.Floor(workingArea.Height / lineSpace)
-            Dim lineAdjustSpace As Integer = (workingArea.Height - (lineCount * lineSpace)) / 2
+            Dim lineAdjustSpaceY As Integer = (workingArea.Height - (lineCount * lineSpace)) / 2
+            Dim lineStart As Integer = 0
 
-            For i = 0 To lineCount
+            Dim lineTitle As String = tbxLineTitle.Text.Trim()
+
+            If Not tbxLineTitle.Text.Trim() = "" Then
+                Dim titleSize = g.MeasureString(lineTitle, defaultFont)
+                lineStart = Math.Ceiling(titleSize.Height / lineSpace)
+                g.DrawString(
+                    lineTitle,
+                    defaultFont,
+                    Brushes.Black,
+                    New Point(initPoint.X, initPoint.Y + lineAdjustSpaceY))
+            End If
+
+            For i = lineStart To lineCount
                 g.DrawLine(
                     defaultPen,
-                    New Point(initPoint.X, initPoint.Y + lineAdjustSpace + (i * lineSpace)),
-                    New Point(initPoint.X + workingArea.Width, initPoint.Y + lineAdjustSpace + (i * lineSpace)))
+                    New Point(initPoint.X, initPoint.Y + lineAdjustSpaceY + (i * lineSpace)),
+                    New Point(initPoint.X + workingArea.Width, initPoint.Y + lineAdjustSpaceY + (i * lineSpace)))
             Next
 
         ElseIf patternType = "Dot" Then

@@ -57,6 +57,8 @@ Partial Class frmMain
 		Me.lblMarkerColorPreview = New System.Windows.Forms.Label()
 		Me.btnPickMarkerColor = New System.Windows.Forms.Button()
 		Me.Label11 = New System.Windows.Forms.Label()
+		Me.Label14 = New System.Windows.Forms.Label()
+		Me.tbxLineTitle = New System.Windows.Forms.TextBox()
 		Me.grpPatternType.SuspendLayout()
 		Me.pnlGridSettings.SuspendLayout()
 		CType(Me.numGridSpace, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -106,14 +108,14 @@ Partial Class frmMain
 		Me.grpPatternType.Size = New System.Drawing.Size(299, 377)
 		Me.grpPatternType.TabIndex = 3
 		Me.grpPatternType.TabStop = False
-		Me.grpPatternType.Text = "Pattern Type"
+		Me.grpPatternType.Text = "Pattern"
 		'
 		'pnlGridSettings
 		'
 		Me.pnlGridSettings.Controls.Add(Me.Label12)
 		Me.pnlGridSettings.Controls.Add(Me.numGridSpace)
 		Me.pnlGridSettings.Controls.Add(Me.Label13)
-		Me.pnlGridSettings.Location = New System.Drawing.Point(47, 292)
+		Me.pnlGridSettings.Location = New System.Drawing.Point(47, 323)
 		Me.pnlGridSettings.Name = "pnlGridSettings"
 		Me.pnlGridSettings.Size = New System.Drawing.Size(220, 30)
 		Me.pnlGridSettings.TabIndex = 14
@@ -154,7 +156,7 @@ Partial Class frmMain
 		'rdbPatternType_Grid
 		'
 		Me.rdbPatternType_Grid.AutoSize = True
-		Me.rdbPatternType_Grid.Location = New System.Drawing.Point(27, 267)
+		Me.rdbPatternType_Grid.Location = New System.Drawing.Point(27, 298)
 		Me.rdbPatternType_Grid.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.rdbPatternType_Grid.Name = "rdbPatternType_Grid"
 		Me.rdbPatternType_Grid.Size = New System.Drawing.Size(53, 19)
@@ -170,7 +172,7 @@ Partial Class frmMain
 		Me.pnlCrosshairSettings.Controls.Add(Me.numCrossSpace)
 		Me.pnlCrosshairSettings.Controls.Add(Me.Label9)
 		Me.pnlCrosshairSettings.Controls.Add(Me.Label10)
-		Me.pnlCrosshairSettings.Location = New System.Drawing.Point(47, 201)
+		Me.pnlCrosshairSettings.Location = New System.Drawing.Point(47, 232)
 		Me.pnlCrosshairSettings.Name = "pnlCrosshairSettings"
 		Me.pnlCrosshairSettings.Size = New System.Drawing.Size(220, 60)
 		Me.pnlCrosshairSettings.TabIndex = 12
@@ -247,7 +249,7 @@ Partial Class frmMain
 		Me.pnlDotSettings.Controls.Add(Me.numDotSpace)
 		Me.pnlDotSettings.Controls.Add(Me.Label6)
 		Me.pnlDotSettings.Controls.Add(Me.Label3)
-		Me.pnlDotSettings.Location = New System.Drawing.Point(47, 110)
+		Me.pnlDotSettings.Location = New System.Drawing.Point(47, 141)
 		Me.pnlDotSettings.Name = "pnlDotSettings"
 		Me.pnlDotSettings.Size = New System.Drawing.Size(220, 60)
 		Me.pnlDotSettings.TabIndex = 5
@@ -318,19 +320,21 @@ Partial Class frmMain
 		'
 		'pnlLineSettings
 		'
+		Me.pnlLineSettings.Controls.Add(Me.tbxLineTitle)
+		Me.pnlLineSettings.Controls.Add(Me.Label14)
 		Me.pnlLineSettings.Controls.Add(Me.Label1)
 		Me.pnlLineSettings.Controls.Add(Me.numLineSpace)
 		Me.pnlLineSettings.Controls.Add(Me.Label2)
 		Me.pnlLineSettings.Location = New System.Drawing.Point(47, 50)
 		Me.pnlLineSettings.Name = "pnlLineSettings"
-		Me.pnlLineSettings.Size = New System.Drawing.Size(220, 30)
+		Me.pnlLineSettings.Size = New System.Drawing.Size(220, 60)
 		Me.pnlLineSettings.TabIndex = 5
 		'
 		'Label1
 		'
 		Me.Label1.AutoSize = True
 		Me.Label1.ForeColor = System.Drawing.Color.DimGray
-		Me.Label1.Location = New System.Drawing.Point(5, 5)
+		Me.Label1.Location = New System.Drawing.Point(5, 34)
 		Me.Label1.Name = "Label1"
 		Me.Label1.Size = New System.Drawing.Size(77, 15)
 		Me.Label1.TabIndex = 3
@@ -338,7 +342,7 @@ Partial Class frmMain
 		'
 		'numLineSpace
 		'
-		Me.numLineSpace.Location = New System.Drawing.Point(95, 3)
+		Me.numLineSpace.Location = New System.Drawing.Point(95, 32)
 		Me.numLineSpace.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
 		Me.numLineSpace.Minimum = New Decimal(New Integer() {4, 0, 0, 0})
 		Me.numLineSpace.Name = "numLineSpace"
@@ -351,7 +355,7 @@ Partial Class frmMain
 		'
 		Me.Label2.AutoSize = True
 		Me.Label2.ForeColor = System.Drawing.Color.DimGray
-		Me.Label2.Location = New System.Drawing.Point(190, 5)
+		Me.Label2.Location = New System.Drawing.Point(190, 34)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(28, 15)
 		Me.Label2.TabIndex = 5
@@ -360,7 +364,7 @@ Partial Class frmMain
 		'rdbPatternType_Crosshair
 		'
 		Me.rdbPatternType_Crosshair.AutoSize = True
-		Me.rdbPatternType_Crosshair.Location = New System.Drawing.Point(27, 176)
+		Me.rdbPatternType_Crosshair.Location = New System.Drawing.Point(27, 207)
 		Me.rdbPatternType_Crosshair.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.rdbPatternType_Crosshair.Name = "rdbPatternType_Crosshair"
 		Me.rdbPatternType_Crosshair.Size = New System.Drawing.Size(88, 19)
@@ -371,7 +375,7 @@ Partial Class frmMain
 		'rdbPatternType_Dot
 		'
 		Me.rdbPatternType_Dot.AutoSize = True
-		Me.rdbPatternType_Dot.Location = New System.Drawing.Point(27, 85)
+		Me.rdbPatternType_Dot.Location = New System.Drawing.Point(27, 116)
 		Me.rdbPatternType_Dot.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.rdbPatternType_Dot.Name = "rdbPatternType_Dot"
 		Me.rdbPatternType_Dot.Size = New System.Drawing.Size(46, 19)
@@ -449,6 +453,24 @@ Partial Class frmMain
 		Me.Label11.TabIndex = 0
 		Me.Label11.Text = "Color"
 		'
+		'Label14
+		'
+		Me.Label14.AutoSize = True
+		Me.Label14.ForeColor = System.Drawing.Color.DimGray
+		Me.Label14.Location = New System.Drawing.Point(5, 6)
+		Me.Label14.Name = "Label14"
+		Me.Label14.Size = New System.Drawing.Size(42, 15)
+		Me.Label14.TabIndex = 6
+		Me.Label14.Text = "Title"
+		'
+		'tbxLineTitle
+		'
+		Me.tbxLineTitle.Location = New System.Drawing.Point(95, 3)
+		Me.tbxLineTitle.Name = "tbxLineTitle"
+		Me.tbxLineTitle.Size = New System.Drawing.Size(121, 23)
+		Me.tbxLineTitle.TabIndex = 7
+		Me.tbxLineTitle.Text = "MEMO"
+		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -524,4 +546,6 @@ Partial Class frmMain
 	Friend WithEvents numGridSpace As NumericUpDown
 	Friend WithEvents Label13 As Label
 	Friend WithEvents rdbPatternType_Grid As RadioButton
+	Friend WithEvents tbxLineTitle As TextBox
+	Friend WithEvents Label14 As Label
 End Class
