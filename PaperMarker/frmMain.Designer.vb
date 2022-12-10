@@ -45,6 +45,8 @@ Partial Class frmMain
 		Me.Label6 = New System.Windows.Forms.Label()
 		Me.Label3 = New System.Windows.Forms.Label()
 		Me.pnlLineSettings = New System.Windows.Forms.Panel()
+		Me.tbxLineTitle = New System.Windows.Forms.TextBox()
+		Me.Label14 = New System.Windows.Forms.Label()
 		Me.Label1 = New System.Windows.Forms.Label()
 		Me.numLineSpace = New System.Windows.Forms.NumericUpDown()
 		Me.Label2 = New System.Windows.Forms.Label()
@@ -54,11 +56,18 @@ Partial Class frmMain
 		Me.pdcMain = New System.Drawing.Printing.PrintDocument()
 		Me.tbxStatus = New System.Windows.Forms.TextBox()
 		Me.grpMarkerSettings = New System.Windows.Forms.GroupBox()
+		Me.rdbLineStyle_Dotted = New System.Windows.Forms.RadioButton()
+		Me.rdbLineStyle_Dashed = New System.Windows.Forms.RadioButton()
+		Me.rdbLineStyle_Solid = New System.Windows.Forms.RadioButton()
+		Me.Label15 = New System.Windows.Forms.Label()
 		Me.lblMarkerColorPreview = New System.Windows.Forms.Label()
 		Me.btnPickMarkerColor = New System.Windows.Forms.Button()
 		Me.Label11 = New System.Windows.Forms.Label()
-		Me.Label14 = New System.Windows.Forms.Label()
-		Me.tbxLineTitle = New System.Windows.Forms.TextBox()
+		Me.pnlHeader = New System.Windows.Forms.Panel()
+		Me.lblAppVersion = New System.Windows.Forms.Label()
+		Me.lblAppTitle = New System.Windows.Forms.Label()
+		Me.picAppIcon = New System.Windows.Forms.PictureBox()
+		Me.btnExit = New System.Windows.Forms.Button()
 		Me.grpPatternType.SuspendLayout()
 		Me.pnlGridSettings.SuspendLayout()
 		CType(Me.numGridSpace, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,27 +80,31 @@ Partial Class frmMain
 		Me.pnlLineSettings.SuspendLayout()
 		CType(Me.numLineSpace, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.grpMarkerSettings.SuspendLayout()
+		Me.pnlHeader.SuspendLayout()
+		CType(Me.picAppIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'btnPrint
 		'
-		Me.btnPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-		Me.btnPrint.BackColor = System.Drawing.Color.ForestGreen
-		Me.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.Green
+		Me.btnPrint.BackColor = System.Drawing.Color.Crimson
+		Me.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.Red
 		Me.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnPrint.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnPrint.ForeColor = System.Drawing.Color.Honeydew
-		Me.btnPrint.Location = New System.Drawing.Point(195, 465)
+		Me.btnPrint.ForeColor = System.Drawing.Color.MintCream
+		Me.btnPrint.Image = CType(resources.GetObject("btnPrint.Image"), System.Drawing.Image)
+		Me.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnPrint.Location = New System.Drawing.Point(767, 588)
 		Me.btnPrint.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.btnPrint.Name = "btnPrint"
-		Me.btnPrint.Size = New System.Drawing.Size(117, 40)
+		Me.btnPrint.Size = New System.Drawing.Size(92, 46)
 		Me.btnPrint.TabIndex = 0
 		Me.btnPrint.Text = "PRINT"
+		Me.btnPrint.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnPrint.UseVisualStyleBackColor = False
 		'
 		'grpPatternType
 		'
-		Me.grpPatternType.BackColor = System.Drawing.Color.White
+		Me.grpPatternType.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
 		Me.grpPatternType.Controls.Add(Me.pnlGridSettings)
 		Me.grpPatternType.Controls.Add(Me.rdbPatternType_Grid)
 		Me.grpPatternType.Controls.Add(Me.pnlCrosshairSettings)
@@ -101,11 +114,11 @@ Partial Class frmMain
 		Me.grpPatternType.Controls.Add(Me.rdbPatternType_Dot)
 		Me.grpPatternType.Controls.Add(Me.rdbPatternType_Line)
 		Me.grpPatternType.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.grpPatternType.Location = New System.Drawing.Point(13, 14)
+		Me.grpPatternType.Location = New System.Drawing.Point(27, 90)
 		Me.grpPatternType.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.grpPatternType.Name = "grpPatternType"
 		Me.grpPatternType.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
-		Me.grpPatternType.Size = New System.Drawing.Size(299, 377)
+		Me.grpPatternType.Size = New System.Drawing.Size(332, 377)
 		Me.grpPatternType.TabIndex = 3
 		Me.grpPatternType.TabStop = False
 		Me.grpPatternType.Text = "Pattern"
@@ -117,7 +130,7 @@ Partial Class frmMain
 		Me.pnlGridSettings.Controls.Add(Me.Label13)
 		Me.pnlGridSettings.Location = New System.Drawing.Point(47, 323)
 		Me.pnlGridSettings.Name = "pnlGridSettings"
-		Me.pnlGridSettings.Size = New System.Drawing.Size(220, 30)
+		Me.pnlGridSettings.Size = New System.Drawing.Size(265, 30)
 		Me.pnlGridSettings.TabIndex = 14
 		'
 		'Label12
@@ -132,22 +145,20 @@ Partial Class frmMain
 		'
 		'numGridSpace
 		'
-		Me.numGridSpace.DecimalPlaces = 1
-		Me.numGridSpace.Increment = New Decimal(New Integer() {5, 0, 0, 65536})
-		Me.numGridSpace.Location = New System.Drawing.Point(95, 3)
+		Me.numGridSpace.Location = New System.Drawing.Point(113, 3)
 		Me.numGridSpace.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
-		Me.numGridSpace.Minimum = New Decimal(New Integer() {2, 0, 0, 0})
+		Me.numGridSpace.Minimum = New Decimal(New Integer() {5, 0, 0, 0})
 		Me.numGridSpace.Name = "numGridSpace"
-		Me.numGridSpace.Size = New System.Drawing.Size(89, 23)
+		Me.numGridSpace.Size = New System.Drawing.Size(115, 23)
 		Me.numGridSpace.TabIndex = 4
 		Me.numGridSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.numGridSpace.Value = New Decimal(New Integer() {25, 0, 0, 65536})
+		Me.numGridSpace.Value = New Decimal(New Integer() {5, 0, 0, 0})
 		'
 		'Label13
 		'
 		Me.Label13.AutoSize = True
 		Me.Label13.ForeColor = System.Drawing.Color.DimGray
-		Me.Label13.Location = New System.Drawing.Point(190, 5)
+		Me.Label13.Location = New System.Drawing.Point(232, 5)
 		Me.Label13.Name = "Label13"
 		Me.Label13.Size = New System.Drawing.Size(28, 15)
 		Me.Label13.TabIndex = 5
@@ -174,18 +185,18 @@ Partial Class frmMain
 		Me.pnlCrosshairSettings.Controls.Add(Me.Label10)
 		Me.pnlCrosshairSettings.Location = New System.Drawing.Point(47, 232)
 		Me.pnlCrosshairSettings.Name = "pnlCrosshairSettings"
-		Me.pnlCrosshairSettings.Size = New System.Drawing.Size(220, 60)
+		Me.pnlCrosshairSettings.Size = New System.Drawing.Size(265, 60)
 		Me.pnlCrosshairSettings.TabIndex = 12
 		'
 		'numCrossSize
 		'
 		Me.numCrossSize.DecimalPlaces = 1
 		Me.numCrossSize.Increment = New Decimal(New Integer() {2, 0, 0, 65536})
-		Me.numCrossSize.Location = New System.Drawing.Point(93, 3)
+		Me.numCrossSize.Location = New System.Drawing.Point(111, 3)
 		Me.numCrossSize.Maximum = New Decimal(New Integer() {25, 0, 0, 65536})
 		Me.numCrossSize.Minimum = New Decimal(New Integer() {4, 0, 0, 65536})
 		Me.numCrossSize.Name = "numCrossSize"
-		Me.numCrossSize.Size = New System.Drawing.Size(89, 23)
+		Me.numCrossSize.Size = New System.Drawing.Size(115, 23)
 		Me.numCrossSize.TabIndex = 10
 		Me.numCrossSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		Me.numCrossSize.Value = New Decimal(New Integer() {4, 0, 0, 65536})
@@ -194,7 +205,7 @@ Partial Class frmMain
 		'
 		Me.Label7.AutoSize = True
 		Me.Label7.ForeColor = System.Drawing.Color.DimGray
-		Me.Label7.Location = New System.Drawing.Point(188, 5)
+		Me.Label7.Location = New System.Drawing.Point(232, 5)
 		Me.Label7.Name = "Label7"
 		Me.Label7.Size = New System.Drawing.Size(28, 15)
 		Me.Label7.TabIndex = 11
@@ -212,11 +223,11 @@ Partial Class frmMain
 		'
 		'numCrossSpace
 		'
-		Me.numCrossSpace.Location = New System.Drawing.Point(93, 32)
+		Me.numCrossSpace.Location = New System.Drawing.Point(111, 32)
 		Me.numCrossSpace.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
 		Me.numCrossSpace.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
 		Me.numCrossSpace.Name = "numCrossSpace"
-		Me.numCrossSpace.Size = New System.Drawing.Size(89, 23)
+		Me.numCrossSpace.Size = New System.Drawing.Size(115, 23)
 		Me.numCrossSpace.TabIndex = 7
 		Me.numCrossSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		Me.numCrossSpace.Value = New Decimal(New Integer() {5, 0, 0, 0})
@@ -235,7 +246,7 @@ Partial Class frmMain
 		'
 		Me.Label10.AutoSize = True
 		Me.Label10.ForeColor = System.Drawing.Color.DimGray
-		Me.Label10.Location = New System.Drawing.Point(188, 34)
+		Me.Label10.Location = New System.Drawing.Point(232, 34)
 		Me.Label10.Name = "Label10"
 		Me.Label10.Size = New System.Drawing.Size(28, 15)
 		Me.Label10.TabIndex = 8
@@ -251,18 +262,18 @@ Partial Class frmMain
 		Me.pnlDotSettings.Controls.Add(Me.Label3)
 		Me.pnlDotSettings.Location = New System.Drawing.Point(47, 141)
 		Me.pnlDotSettings.Name = "pnlDotSettings"
-		Me.pnlDotSettings.Size = New System.Drawing.Size(220, 60)
+		Me.pnlDotSettings.Size = New System.Drawing.Size(265, 60)
 		Me.pnlDotSettings.TabIndex = 5
 		'
 		'numDotSize
 		'
 		Me.numDotSize.DecimalPlaces = 1
 		Me.numDotSize.Increment = New Decimal(New Integer() {1, 0, 0, 65536})
-		Me.numDotSize.Location = New System.Drawing.Point(93, 3)
+		Me.numDotSize.Location = New System.Drawing.Point(111, 3)
 		Me.numDotSize.Maximum = New Decimal(New Integer() {1, 0, 0, 0})
 		Me.numDotSize.Minimum = New Decimal(New Integer() {2, 0, 0, 65536})
 		Me.numDotSize.Name = "numDotSize"
-		Me.numDotSize.Size = New System.Drawing.Size(89, 23)
+		Me.numDotSize.Size = New System.Drawing.Size(115, 23)
 		Me.numDotSize.TabIndex = 10
 		Me.numDotSize.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		Me.numDotSize.Value = New Decimal(New Integer() {2, 0, 0, 65536})
@@ -271,7 +282,7 @@ Partial Class frmMain
 		'
 		Me.Label5.AutoSize = True
 		Me.Label5.ForeColor = System.Drawing.Color.DimGray
-		Me.Label5.Location = New System.Drawing.Point(188, 5)
+		Me.Label5.Location = New System.Drawing.Point(232, 5)
 		Me.Label5.Name = "Label5"
 		Me.Label5.Size = New System.Drawing.Size(28, 15)
 		Me.Label5.TabIndex = 11
@@ -289,11 +300,11 @@ Partial Class frmMain
 		'
 		'numDotSpace
 		'
-		Me.numDotSpace.Location = New System.Drawing.Point(93, 32)
+		Me.numDotSpace.Location = New System.Drawing.Point(111, 32)
 		Me.numDotSpace.Maximum = New Decimal(New Integer() {10, 0, 0, 0})
 		Me.numDotSpace.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
 		Me.numDotSpace.Name = "numDotSpace"
-		Me.numDotSpace.Size = New System.Drawing.Size(89, 23)
+		Me.numDotSpace.Size = New System.Drawing.Size(115, 23)
 		Me.numDotSpace.TabIndex = 7
 		Me.numDotSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		Me.numDotSpace.Value = New Decimal(New Integer() {5, 0, 0, 0})
@@ -312,7 +323,7 @@ Partial Class frmMain
 		'
 		Me.Label3.AutoSize = True
 		Me.Label3.ForeColor = System.Drawing.Color.DimGray
-		Me.Label3.Location = New System.Drawing.Point(188, 34)
+		Me.Label3.Location = New System.Drawing.Point(232, 34)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(28, 15)
 		Me.Label3.TabIndex = 8
@@ -327,8 +338,26 @@ Partial Class frmMain
 		Me.pnlLineSettings.Controls.Add(Me.Label2)
 		Me.pnlLineSettings.Location = New System.Drawing.Point(47, 50)
 		Me.pnlLineSettings.Name = "pnlLineSettings"
-		Me.pnlLineSettings.Size = New System.Drawing.Size(220, 60)
+		Me.pnlLineSettings.Size = New System.Drawing.Size(265, 60)
 		Me.pnlLineSettings.TabIndex = 5
+		'
+		'tbxLineTitle
+		'
+		Me.tbxLineTitle.Location = New System.Drawing.Point(113, 3)
+		Me.tbxLineTitle.Name = "tbxLineTitle"
+		Me.tbxLineTitle.Size = New System.Drawing.Size(147, 23)
+		Me.tbxLineTitle.TabIndex = 7
+		Me.tbxLineTitle.Text = "MEMO"
+		'
+		'Label14
+		'
+		Me.Label14.AutoSize = True
+		Me.Label14.ForeColor = System.Drawing.Color.DimGray
+		Me.Label14.Location = New System.Drawing.Point(5, 6)
+		Me.Label14.Name = "Label14"
+		Me.Label14.Size = New System.Drawing.Size(42, 15)
+		Me.Label14.TabIndex = 6
+		Me.Label14.Text = "Title"
 		'
 		'Label1
 		'
@@ -342,11 +371,11 @@ Partial Class frmMain
 		'
 		'numLineSpace
 		'
-		Me.numLineSpace.Location = New System.Drawing.Point(95, 32)
+		Me.numLineSpace.Location = New System.Drawing.Point(113, 32)
 		Me.numLineSpace.Maximum = New Decimal(New Integer() {20, 0, 0, 0})
 		Me.numLineSpace.Minimum = New Decimal(New Integer() {4, 0, 0, 0})
 		Me.numLineSpace.Name = "numLineSpace"
-		Me.numLineSpace.Size = New System.Drawing.Size(89, 23)
+		Me.numLineSpace.Size = New System.Drawing.Size(115, 23)
 		Me.numLineSpace.TabIndex = 4
 		Me.numLineSpace.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
 		Me.numLineSpace.Value = New Decimal(New Integer() {7, 0, 0, 0})
@@ -355,7 +384,7 @@ Partial Class frmMain
 		'
 		Me.Label2.AutoSize = True
 		Me.Label2.ForeColor = System.Drawing.Color.DimGray
-		Me.Label2.Location = New System.Drawing.Point(190, 34)
+		Me.Label2.Location = New System.Drawing.Point(232, 34)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(28, 15)
 		Me.Label2.TabIndex = 5
@@ -402,42 +431,90 @@ Partial Class frmMain
 		'
 		'tbxStatus
 		'
-		Me.tbxStatus.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-			Or System.Windows.Forms.AnchorStyles.Left) _
+		Me.tbxStatus.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxStatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
 		Me.tbxStatus.BorderStyle = System.Windows.Forms.BorderStyle.None
-		Me.tbxStatus.Location = New System.Drawing.Point(319, 22)
+		Me.tbxStatus.ForeColor = System.Drawing.Color.DarkRed
+		Me.tbxStatus.Location = New System.Drawing.Point(366, 98)
 		Me.tbxStatus.Multiline = True
 		Me.tbxStatus.Name = "tbxStatus"
 		Me.tbxStatus.ReadOnly = True
-		Me.tbxStatus.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-		Me.tbxStatus.Size = New System.Drawing.Size(588, 483)
+		Me.tbxStatus.Size = New System.Drawing.Size(570, 484)
 		Me.tbxStatus.TabIndex = 4
 		'
 		'grpMarkerSettings
 		'
-		Me.grpMarkerSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+		Me.grpMarkerSettings.Controls.Add(Me.rdbLineStyle_Dotted)
+		Me.grpMarkerSettings.Controls.Add(Me.rdbLineStyle_Dashed)
+		Me.grpMarkerSettings.Controls.Add(Me.rdbLineStyle_Solid)
+		Me.grpMarkerSettings.Controls.Add(Me.Label15)
 		Me.grpMarkerSettings.Controls.Add(Me.lblMarkerColorPreview)
 		Me.grpMarkerSettings.Controls.Add(Me.btnPickMarkerColor)
 		Me.grpMarkerSettings.Controls.Add(Me.Label11)
-		Me.grpMarkerSettings.Location = New System.Drawing.Point(13, 397)
+		Me.grpMarkerSettings.Location = New System.Drawing.Point(27, 473)
 		Me.grpMarkerSettings.Name = "grpMarkerSettings"
-		Me.grpMarkerSettings.Size = New System.Drawing.Size(299, 62)
+		Me.grpMarkerSettings.Size = New System.Drawing.Size(333, 109)
 		Me.grpMarkerSettings.TabIndex = 5
 		Me.grpMarkerSettings.TabStop = False
 		Me.grpMarkerSettings.Text = "Marker"
 		'
+		'rdbLineStyle_Dotted
+		'
+		Me.rdbLineStyle_Dotted.AutoSize = True
+		Me.rdbLineStyle_Dotted.Location = New System.Drawing.Point(245, 63)
+		Me.rdbLineStyle_Dotted.Name = "rdbLineStyle_Dotted"
+		Me.rdbLineStyle_Dotted.Size = New System.Drawing.Size(67, 19)
+		Me.rdbLineStyle_Dotted.TabIndex = 6
+		Me.rdbLineStyle_Dotted.Text = "Dotted"
+		Me.rdbLineStyle_Dotted.UseVisualStyleBackColor = True
+		'
+		'rdbLineStyle_Dashed
+		'
+		Me.rdbLineStyle_Dashed.AutoSize = True
+		Me.rdbLineStyle_Dashed.Location = New System.Drawing.Point(172, 63)
+		Me.rdbLineStyle_Dashed.Name = "rdbLineStyle_Dashed"
+		Me.rdbLineStyle_Dashed.Size = New System.Drawing.Size(67, 19)
+		Me.rdbLineStyle_Dashed.TabIndex = 5
+		Me.rdbLineStyle_Dashed.Text = "Dashed"
+		Me.rdbLineStyle_Dashed.UseVisualStyleBackColor = True
+		'
+		'rdbLineStyle_Solid
+		'
+		Me.rdbLineStyle_Solid.AutoSize = True
+		Me.rdbLineStyle_Solid.Checked = True
+		Me.rdbLineStyle_Solid.Location = New System.Drawing.Point(106, 63)
+		Me.rdbLineStyle_Solid.Name = "rdbLineStyle_Solid"
+		Me.rdbLineStyle_Solid.Size = New System.Drawing.Size(60, 19)
+		Me.rdbLineStyle_Solid.TabIndex = 4
+		Me.rdbLineStyle_Solid.TabStop = True
+		Me.rdbLineStyle_Solid.Text = "Solid"
+		Me.rdbLineStyle_Solid.UseVisualStyleBackColor = True
+		'
+		'Label15
+		'
+		Me.Label15.AutoSize = True
+		Me.Label15.ForeColor = System.Drawing.Color.DimGray
+		Me.Label15.Location = New System.Drawing.Point(24, 65)
+		Me.Label15.Name = "Label15"
+		Me.Label15.Size = New System.Drawing.Size(42, 15)
+		Me.Label15.TabIndex = 3
+		Me.Label15.Text = "Style"
+		'
 		'lblMarkerColorPreview
 		'
-		Me.lblMarkerColorPreview.BackColor = System.Drawing.Color.LightGray
-		Me.lblMarkerColorPreview.Location = New System.Drawing.Point(130, 24)
+		Me.lblMarkerColorPreview.BackColor = System.Drawing.Color.Crimson
+		Me.lblMarkerColorPreview.ForeColor = System.Drawing.Color.White
+		Me.lblMarkerColorPreview.Location = New System.Drawing.Point(106, 24)
 		Me.lblMarkerColorPreview.Name = "lblMarkerColorPreview"
-		Me.lblMarkerColorPreview.Size = New System.Drawing.Size(56, 23)
+		Me.lblMarkerColorPreview.Size = New System.Drawing.Size(120, 23)
 		Me.lblMarkerColorPreview.TabIndex = 2
+		Me.lblMarkerColorPreview.Text = "Sample"
+		Me.lblMarkerColorPreview.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
 		'
 		'btnPickMarkerColor
 		'
-		Me.btnPickMarkerColor.Location = New System.Drawing.Point(192, 24)
+		Me.btnPickMarkerColor.Location = New System.Drawing.Point(232, 24)
 		Me.btnPickMarkerColor.Name = "btnPickMarkerColor"
 		Me.btnPickMarkerColor.Size = New System.Drawing.Size(75, 23)
 		Me.btnPickMarkerColor.TabIndex = 1
@@ -447,42 +524,89 @@ Partial Class frmMain
 		'Label11
 		'
 		Me.Label11.AutoSize = True
+		Me.Label11.ForeColor = System.Drawing.Color.DimGray
 		Me.Label11.Location = New System.Drawing.Point(24, 28)
 		Me.Label11.Name = "Label11"
 		Me.Label11.Size = New System.Drawing.Size(42, 15)
 		Me.Label11.TabIndex = 0
 		Me.Label11.Text = "Color"
 		'
-		'Label14
+		'pnlHeader
 		'
-		Me.Label14.AutoSize = True
-		Me.Label14.ForeColor = System.Drawing.Color.DimGray
-		Me.Label14.Location = New System.Drawing.Point(5, 6)
-		Me.Label14.Name = "Label14"
-		Me.Label14.Size = New System.Drawing.Size(42, 15)
-		Me.Label14.TabIndex = 6
-		Me.Label14.Text = "Title"
+		Me.pnlHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.pnlHeader.BackColor = System.Drawing.Color.Purple
+		Me.pnlHeader.Controls.Add(Me.lblAppVersion)
+		Me.pnlHeader.Controls.Add(Me.lblAppTitle)
+		Me.pnlHeader.Controls.Add(Me.picAppIcon)
+		Me.pnlHeader.Location = New System.Drawing.Point(0, 0)
+		Me.pnlHeader.Name = "pnlHeader"
+		Me.pnlHeader.Size = New System.Drawing.Size(963, 60)
+		Me.pnlHeader.TabIndex = 6
 		'
-		'tbxLineTitle
+		'lblAppVersion
 		'
-		Me.tbxLineTitle.Location = New System.Drawing.Point(95, 3)
-		Me.tbxLineTitle.Name = "tbxLineTitle"
-		Me.tbxLineTitle.Size = New System.Drawing.Size(121, 23)
-		Me.tbxLineTitle.TabIndex = 7
-		Me.tbxLineTitle.Text = "MEMO"
+		Me.lblAppVersion.AutoSize = True
+		Me.lblAppVersion.ForeColor = System.Drawing.Color.White
+		Me.lblAppVersion.Location = New System.Drawing.Point(212, 37)
+		Me.lblAppVersion.Name = "lblAppVersion"
+		Me.lblAppVersion.Size = New System.Drawing.Size(49, 15)
+		Me.lblAppVersion.TabIndex = 9
+		Me.lblAppVersion.Text = "Beta 3"
+		'
+		'lblAppTitle
+		'
+		Me.lblAppTitle.AutoSize = True
+		Me.lblAppTitle.Font = New System.Drawing.Font("Consolas", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblAppTitle.ForeColor = System.Drawing.Color.White
+		Me.lblAppTitle.Location = New System.Drawing.Point(59, 3)
+		Me.lblAppTitle.Name = "lblAppTitle"
+		Me.lblAppTitle.Size = New System.Drawing.Size(223, 34)
+		Me.lblAppTitle.TabIndex = 8
+		Me.lblAppTitle.Text = "PAPER MARKER "
+		'
+		'picAppIcon
+		'
+		Me.picAppIcon.Image = CType(resources.GetObject("picAppIcon.Image"), System.Drawing.Image)
+		Me.picAppIcon.Location = New System.Drawing.Point(3, 3)
+		Me.picAppIcon.Name = "picAppIcon"
+		Me.picAppIcon.Size = New System.Drawing.Size(50, 50)
+		Me.picAppIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+		Me.picAppIcon.TabIndex = 7
+		Me.picAppIcon.TabStop = False
+		'
+		'btnExit
+		'
+		Me.btnExit.BackColor = System.Drawing.Color.DarkOrange
+		Me.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.Yellow
+		Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+		Me.btnExit.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnExit.ForeColor = System.Drawing.Color.MintCream
+		Me.btnExit.Image = CType(resources.GetObject("btnExit.Image"), System.Drawing.Image)
+		Me.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnExit.Location = New System.Drawing.Point(867, 588)
+		Me.btnExit.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+		Me.btnExit.Name = "btnExit"
+		Me.btnExit.Size = New System.Drawing.Size(83, 46)
+		Me.btnExit.TabIndex = 7
+		Me.btnExit.Text = "EXIT"
+		Me.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.btnExit.UseVisualStyleBackColor = False
 		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.BackColor = System.Drawing.Color.White
-		Me.ClientSize = New System.Drawing.Size(920, 517)
+		Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
+		Me.ClientSize = New System.Drawing.Size(963, 661)
+		Me.Controls.Add(Me.btnExit)
+		Me.Controls.Add(Me.pnlHeader)
 		Me.Controls.Add(Me.grpMarkerSettings)
 		Me.Controls.Add(Me.tbxStatus)
 		Me.Controls.Add(Me.grpPatternType)
 		Me.Controls.Add(Me.btnPrint)
 		Me.Font = New System.Drawing.Font("Consolas", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
 		Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
 		Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
 		Me.MaximizeBox = False
@@ -507,6 +631,9 @@ Partial Class frmMain
 		CType(Me.numLineSpace, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.grpMarkerSettings.ResumeLayout(False)
 		Me.grpMarkerSettings.PerformLayout()
+		Me.pnlHeader.ResumeLayout(False)
+		Me.pnlHeader.PerformLayout()
+		CType(Me.picAppIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -548,4 +675,13 @@ Partial Class frmMain
 	Friend WithEvents rdbPatternType_Grid As RadioButton
 	Friend WithEvents tbxLineTitle As TextBox
 	Friend WithEvents Label14 As Label
+	Friend WithEvents rdbLineStyle_Dotted As RadioButton
+	Friend WithEvents rdbLineStyle_Dashed As RadioButton
+	Friend WithEvents rdbLineStyle_Solid As RadioButton
+	Friend WithEvents Label15 As Label
+	Friend WithEvents pnlHeader As Panel
+	Friend WithEvents lblAppTitle As Label
+	Friend WithEvents picAppIcon As PictureBox
+	Friend WithEvents lblAppVersion As Label
+	Friend WithEvents btnExit As Button
 End Class

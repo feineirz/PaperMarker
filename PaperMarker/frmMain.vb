@@ -4,6 +4,27 @@
     Private Const factorMillimeterToPixel = 1 / factorPixelToMillimeter
     Private patternType As String
 
+#Region "Moveable Form Code"
+    <System.Runtime.InteropServices.DllImportAttribute("user32.dll")>
+    Public Shared Function SendMessage(hWnd As IntPtr, Msg As Integer, wParam As Integer, lParam As Integer) As Integer
+    End Function
+
+    <System.Runtime.InteropServices.DllImportAttribute("user32.dll")>
+    Public Shared Function ReleaseCapture() As Boolean
+    End Function
+
+    Private Sub Form_MouseDown(sender As Object, e As MouseEventArgs) Handles pnlHeader.MouseDown
+        Const WM_NCLBUTTONDOWN As Integer = &HA1
+        Const HT_CAPTION As Integer = &H2
+
+        If e.Button = MouseButtons.Left Then
+            ReleaseCapture()
+            SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0)
+        End If
+    End Sub
+
+#End Region
+
     Private Sub pdcMain_PrintPage(sender As Object, e As Printing.PrintPageEventArgs) Handles pdcMain.PrintPage
 
         Dim g As Graphics = e.Graphics
@@ -11,8 +32,11 @@
         g.SmoothingMode = Drawing2D.SmoothingMode.AntiAlias
 
         Dim defaultFont = New Font("Tahoma", 16, FontStyle.Bold)
-        Dim defaultPen As New Pen(lblMarkerColorPreview.BackColor, 1)
+        Dim defaultPen As New Pen(lblMarkerColorPreview.BackColor, 0.02)
         Dim defaultBrush As New SolidBrush(lblMarkerColorPreview.BackColor)
+        Dim defaultFontBrush = New SolidBrush(Color.FromArgb(255, 100, 100, 100))
+        Dim defaultDashStyle As Single() = {8, 8}
+        Dim defaultDotStyle As Single() = {1, 4}
 
         Dim paperSize As New Size(pdcMain.DefaultPageSettings.PaperSize.Width, pdcMain.DefaultPageSettings.PaperSize.Height) 'pixel
         Dim paperPadding As New Size(10 * factorMillimeterToPixel, 10 * factorMillimeterToPixel) 'pixel
@@ -33,9 +57,13 @@
                 g.DrawString(
                     lineTitle,
                     defaultFont,
-                    Brushes.Black,
+                    defaultBrush,
                     New Point(initPoint.X, initPoint.Y + lineAdjustSpaceY))
             End If
+
+            If rdbLineStyle_Solid.Checked Then defaultPen.DashStyle = Drawing2D.DashStyle.Solid
+            If rdbLineStyle_Dashed.Checked Then defaultPen.DashPattern = defaultDashStyle
+            If rdbLineStyle_Dotted.Checked Then defaultPen.DashPattern = defaultDotStyle
 
             For i = lineStart To lineCount
                 g.DrawLine(
@@ -96,6 +124,10 @@
             Dim gridAdjustSpace As New Size(
                 (workingArea.Width - (gridCount.Width * gridSpace)) / 2,
                 (workingArea.Height - (gridCount.Height * gridSpace)) / 2)
+
+            If rdbLineStyle_Solid.Checked Then defaultPen.DashStyle = Drawing2D.DashStyle.Solid
+            If rdbLineStyle_Dashed.Checked Then defaultPen.DashPattern = defaultDashStyle
+            If rdbLineStyle_Dotted.Checked Then defaultPen.DashPattern = defaultDotStyle
 
             For i = 0 To gridCount.Width
                 For j = 0 To gridCount.Height
@@ -195,5 +227,9 @@
             lblMarkerColorPreview.BackColor = dlgColorPicker.Color
         End If
 
+    End Sub
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Application.Exit()
     End Sub
 End Class
