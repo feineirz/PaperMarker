@@ -38,10 +38,10 @@
         Dim defaultDashStyle As Single() = {8, 8}
         Dim defaultDotStyle As Single() = {1, 4}
 
-        Dim paperSize As New Size(pdcMain.DefaultPageSettings.PaperSize.Width, pdcMain.DefaultPageSettings.PaperSize.Height) 'pixel
-        Dim paperPadding As New Size(10 * factorMillimeterToPixel, 10 * factorMillimeterToPixel) 'pixel
-        Dim workingArea As New Size(paperSize.Width - (2 * paperPadding.Width), paperSize.Height - (2 * paperPadding.Height)) 'pixel
-        Dim initPoint As New Point(paperPadding.Width, paperPadding.Height)
+        Dim paperSize As New SizeF(pdcMain.DefaultPageSettings.PaperSize.Width, pdcMain.DefaultPageSettings.PaperSize.Height) 'pixel
+        Dim paperPadding As New SizeF(10 * factorMillimeterToPixel, 10 * factorMillimeterToPixel) 'pixel
+        Dim workingArea As New SizeF(paperSize.Width - (2 * paperPadding.Width), paperSize.Height - (2 * paperPadding.Height)) 'pixel
+        Dim initPoint As New PointF(paperPadding.Width, paperPadding.Height)
 
         If patternType = "Line" Then
             Dim lineSpace As Integer = numLineSpace.Value * factorMillimeterToPixel
@@ -58,7 +58,7 @@
                     lineTitle,
                     defaultFont,
                     defaultBrush,
-                    New Point(initPoint.X, initPoint.Y + lineAdjustSpaceY))
+                    New PointF(initPoint.X, initPoint.Y + lineAdjustSpaceY))
             End If
 
             If rdbLineStyle_Solid.Checked Then defaultPen.DashStyle = Drawing2D.DashStyle.Solid
@@ -68,17 +68,17 @@
             For i = lineStart To lineCount
                 g.DrawLine(
                     defaultPen,
-                    New Point(initPoint.X, initPoint.Y + lineAdjustSpaceY + (i * lineSpace)),
-                    New Point(initPoint.X + workingArea.Width, initPoint.Y + lineAdjustSpaceY + (i * lineSpace)))
+                    New PointF(initPoint.X, initPoint.Y + lineAdjustSpaceY + (i * lineSpace)),
+                    New PointF(initPoint.X + workingArea.Width, initPoint.Y + lineAdjustSpaceY + (i * lineSpace)))
             Next
 
         ElseIf patternType = "Dot" Then
             Dim dotSize As Integer = numDotSize.Value * factorMillimeterToPixel
             Dim dotSpace As Integer = numDotSpace.Value * factorMillimeterToPixel
-            Dim dotCount As New Size(
+            Dim dotCount As New SizeF(
                 Math.Floor(workingArea.Width / dotSpace),
                 Math.Floor(workingArea.Height / dotSpace))
-            Dim dotAdjustSpace As New Size(
+            Dim dotAdjustSpace As New SizeF(
                 (workingArea.Width - (dotCount.Width * dotSpace)) / 2,
                 (workingArea.Height - (dotCount.Height * dotSpace)) / 2)
 
@@ -96,10 +96,10 @@
         ElseIf patternType = "Crosshair" Then
             Dim crossSize As Integer = numCrossSize.Value * factorMillimeterToPixel
             Dim crossSpace As Integer = numCrossSpace.Value * factorMillimeterToPixel
-            Dim crossCount As New Size(
+            Dim crossCount As New SizeF(
                 Math.Floor(workingArea.Width / crossSpace),
                 Math.Floor(workingArea.Height / crossSpace))
-            Dim crossAdjustSpace As New Size(
+            Dim crossAdjustSpace As New SizeF(
                 (workingArea.Width - (crossCount.Width * crossSpace)) / 2,
                 (workingArea.Height - (crossCount.Height * crossSpace)) / 2)
 
@@ -107,21 +107,21 @@
                 For j = 0 To crossCount.Height
                     g.DrawLine(
                         defaultPen,
-                        New Point(initPoint.X + crossAdjustSpace.Width + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + (0.5 * crossSize) + (j * crossSpace)),
-                        New Point(initPoint.X + crossAdjustSpace.Width + crossSize + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + (0.5 * crossSize) + (j * crossSpace)))
+                        New PointF(initPoint.X + crossAdjustSpace.Width + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + (0.5 * crossSize) + (j * crossSpace)),
+                        New PointF(initPoint.X + crossAdjustSpace.Width + crossSize + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + (0.5 * crossSize) + (j * crossSpace)))
                     g.DrawLine(
                         defaultPen,
-                        New Point(initPoint.X + crossAdjustSpace.Width + (0.5 * crossSize) + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + (j * crossSpace)),
-                        New Point(initPoint.X + crossAdjustSpace.Width + (0.5 * crossSize) + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + crossSize + (j * crossSpace)))
+                        New PointF(initPoint.X + crossAdjustSpace.Width + (0.5 * crossSize) + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + (j * crossSpace)),
+                        New PointF(initPoint.X + crossAdjustSpace.Width + (0.5 * crossSize) + (i * crossSpace), initPoint.Y + crossAdjustSpace.Height + crossSize + (j * crossSpace)))
                 Next
             Next
 
         ElseIf patternType = "Grid" Then
             Dim gridSpace As Integer = numGridSpace.Value * factorMillimeterToPixel
-            Dim gridCount As New Size(
+            Dim gridCount As New SizeF(
                 Math.Floor(workingArea.Width / gridSpace),
                 Math.Floor(workingArea.Height / gridSpace))
-            Dim gridAdjustSpace As New Size(
+            Dim gridAdjustSpace As New SizeF(
                 (workingArea.Width - (gridCount.Width * gridSpace)) / 2,
                 (workingArea.Height - (gridCount.Height * gridSpace)) / 2)
 
@@ -133,12 +133,12 @@
                 For j = 0 To gridCount.Height
                     g.DrawLine(
                         defaultPen,
-                        New Point(initPoint.X + gridAdjustSpace.Width, initPoint.Y + gridAdjustSpace.Height + (j * gridSpace)),
-                        New Point(initPoint.X + gridAdjustSpace.Width + (gridCount.Width * gridSpace), initPoint.Y + gridAdjustSpace.Height + (j * gridSpace)))
+                        New PointF(initPoint.X + gridAdjustSpace.Width, initPoint.Y + gridAdjustSpace.Height + (j * gridSpace)),
+                        New PointF(initPoint.X + gridAdjustSpace.Width + (gridCount.Width * gridSpace), initPoint.Y + gridAdjustSpace.Height + (j * gridSpace)))
                     g.DrawLine(
                         defaultPen,
-                        New Point(initPoint.X + gridAdjustSpace.Width + (i * gridSpace), initPoint.Y + gridAdjustSpace.Height),
-                        New Point(initPoint.X + gridAdjustSpace.Width + (i * gridSpace), initPoint.Y + gridAdjustSpace.Height + (gridCount.Height * gridSpace)))
+                        New PointF(initPoint.X + gridAdjustSpace.Width + (i * gridSpace), initPoint.Y + gridAdjustSpace.Height),
+                        New PointF(initPoint.X + gridAdjustSpace.Width + (i * gridSpace), initPoint.Y + gridAdjustSpace.Height + (gridCount.Height * gridSpace)))
                 Next
             Next
 
@@ -223,11 +223,35 @@
     Private Sub btnPickMarkerColor_Click(sender As Object, e As EventArgs) Handles btnPickMarkerColor.Click
 
         Dim dlgColorPicker As New ColorDialog
+        Dim a, r, g, b, sumRGBValue, avgRGBValue As Integer
+
         If dlgColorPicker.ShowDialog = DialogResult.OK Then
             pnlHeader.BackColor = dlgColorPicker.Color
             lblMarkerColorPreview.BackColor = dlgColorPicker.Color
             tbxStatus.BackColor = dlgColorPicker.Color
             pnlFooter.BackColor = dlgColorPicker.Color
+
+            a = lblMarkerColorPreview.BackColor.A
+            r = lblMarkerColorPreview.BackColor.R
+            g = lblMarkerColorPreview.BackColor.G
+            b = lblMarkerColorPreview.BackColor.B
+
+            sumRGBValue = r + g + b
+            avgRGBValue = 3 * 128 - 30
+
+            If sumRGBValue > avgRGBValue Then
+                lblAppTitle.ForeColor = Color.Black
+                lblAppVersion.ForeColor = Color.Black
+                lblMarkerColorPreview.ForeColor = Color.Black
+                tbxStatus.ForeColor = Color.Black
+            Else
+                lblAppTitle.ForeColor = Color.White
+                lblAppVersion.ForeColor = Color.White
+                lblMarkerColorPreview.ForeColor = Color.White
+                tbxStatus.ForeColor = Color.White
+            End If
+
+            lblDebugInfo.Text = "A: " & a & ", R: " & r & ", G: " & g & ", B: " & b
         End If
 
     End Sub

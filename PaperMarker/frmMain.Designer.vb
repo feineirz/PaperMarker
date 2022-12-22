@@ -59,17 +59,17 @@ Partial Class frmMain
 		Me.rdbLineStyle_Dotted = New System.Windows.Forms.RadioButton()
 		Me.rdbLineStyle_Dashed = New System.Windows.Forms.RadioButton()
 		Me.rdbLineStyle_Solid = New System.Windows.Forms.RadioButton()
-		Me.Label15 = New System.Windows.Forms.Label()
+		Me.lblDebugInfo = New System.Windows.Forms.Label()
 		Me.lblMarkerColorPreview = New System.Windows.Forms.Label()
 		Me.btnPickMarkerColor = New System.Windows.Forms.Button()
 		Me.Label11 = New System.Windows.Forms.Label()
 		Me.pnlHeader = New System.Windows.Forms.Panel()
+		Me.lblCredit = New System.Windows.Forms.Label()
 		Me.lblAppVersion = New System.Windows.Forms.Label()
 		Me.lblAppTitle = New System.Windows.Forms.Label()
 		Me.picAppIcon = New System.Windows.Forms.PictureBox()
 		Me.btnExit = New System.Windows.Forms.Button()
 		Me.pnlFooter = New System.Windows.Forms.Panel()
-		Me.lblCredit = New System.Windows.Forms.Label()
 		Me.grpPatternType.SuspendLayout()
 		Me.pnlGridSettings.SuspendLayout()
 		CType(Me.numGridSpace, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -484,7 +484,6 @@ Partial Class frmMain
 		Me.grpMarkerSettings.Controls.Add(Me.rdbLineStyle_Dotted)
 		Me.grpMarkerSettings.Controls.Add(Me.rdbLineStyle_Dashed)
 		Me.grpMarkerSettings.Controls.Add(Me.rdbLineStyle_Solid)
-		Me.grpMarkerSettings.Controls.Add(Me.Label15)
 		Me.grpMarkerSettings.Controls.Add(Me.lblMarkerColorPreview)
 		Me.grpMarkerSettings.Controls.Add(Me.btnPickMarkerColor)
 		Me.grpMarkerSettings.Controls.Add(Me.Label11)
@@ -530,15 +529,16 @@ Partial Class frmMain
 		Me.rdbLineStyle_Solid.Text = "Solid"
 		Me.rdbLineStyle_Solid.UseVisualStyleBackColor = True
 		'
-		'Label15
+		'lblDebugInfo
 		'
-		Me.Label15.AutoSize = True
-		Me.Label15.ForeColor = System.Drawing.Color.DimGray
-		Me.Label15.Location = New System.Drawing.Point(24, 65)
-		Me.Label15.Name = "Label15"
-		Me.Label15.Size = New System.Drawing.Size(42, 15)
-		Me.Label15.TabIndex = 3
-		Me.Label15.Text = "Style"
+		Me.lblDebugInfo.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblDebugInfo.ForeColor = System.Drawing.Color.DimGray
+		Me.lblDebugInfo.Location = New System.Drawing.Point(27, 588)
+		Me.lblDebugInfo.Name = "lblDebugInfo"
+		Me.lblDebugInfo.Size = New System.Drawing.Size(216, 55)
+		Me.lblDebugInfo.TabIndex = 3
+		Me.lblDebugInfo.Text = "Debug info"
+		Me.lblDebugInfo.Visible = False
 		'
 		'lblMarkerColorPreview
 		'
@@ -585,6 +585,16 @@ Partial Class frmMain
 		Me.pnlHeader.Name = "pnlHeader"
 		Me.pnlHeader.Size = New System.Drawing.Size(460, 60)
 		Me.pnlHeader.TabIndex = 6
+		'
+		'lblCredit
+		'
+		Me.lblCredit.AutoSize = True
+		Me.lblCredit.ForeColor = System.Drawing.Color.DarkGray
+		Me.lblCredit.Location = New System.Drawing.Point(62, 38)
+		Me.lblCredit.Name = "lblCredit"
+		Me.lblCredit.Size = New System.Drawing.Size(70, 15)
+		Me.lblCredit.TabIndex = 9
+		Me.lblCredit.Text = "feinz.net"
 		'
 		'lblAppVersion
 		'
@@ -647,25 +657,16 @@ Partial Class frmMain
 		Me.pnlFooter.Size = New System.Drawing.Size(460, 70)
 		Me.pnlFooter.TabIndex = 8
 		'
-		'lblCredit
-		'
-		Me.lblCredit.AutoSize = True
-		Me.lblCredit.ForeColor = System.Drawing.Color.DarkGray
-		Me.lblCredit.Location = New System.Drawing.Point(62, 38)
-		Me.lblCredit.Name = "lblCredit"
-		Me.lblCredit.Size = New System.Drawing.Size(70, 15)
-		Me.lblCredit.TabIndex = 9
-		Me.lblCredit.Text = "feinz.net"
-		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.BackColor = System.Drawing.Color.FloralWhite
+		Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(253, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
 		Me.ClientSize = New System.Drawing.Size(460, 716)
 		Me.Controls.Add(Me.pnlFooter)
 		Me.Controls.Add(Me.btnExit)
 		Me.Controls.Add(Me.pnlHeader)
+		Me.Controls.Add(Me.lblDebugInfo)
 		Me.Controls.Add(Me.grpMarkerSettings)
 		Me.Controls.Add(Me.grpPatternType)
 		Me.Controls.Add(Me.btnPrint)
@@ -743,7 +744,7 @@ Partial Class frmMain
 	Friend WithEvents rdbLineStyle_Dotted As RadioButton
 	Friend WithEvents rdbLineStyle_Dashed As RadioButton
 	Friend WithEvents rdbLineStyle_Solid As RadioButton
-	Friend WithEvents Label15 As Label
+	Friend WithEvents lblDebugInfo As Label
 	Friend WithEvents pnlHeader As Panel
 	Friend WithEvents lblAppTitle As Label
 	Friend WithEvents picAppIcon As PictureBox
