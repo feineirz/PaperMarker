@@ -89,7 +89,7 @@ Partial Class frmMain
 		'btnPrint
 		'
 		Me.btnPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnPrint.BackColor = System.Drawing.Color.Crimson
+		Me.btnPrint.BackColor = System.Drawing.Color.Purple
 		Me.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.Red
 		Me.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnPrint.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -109,7 +109,6 @@ Partial Class frmMain
 		'
 		Me.grpPatternType.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.grpPatternType.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
 		Me.grpPatternType.Controls.Add(Me.pnlGridSettings)
 		Me.grpPatternType.Controls.Add(Me.rdbPatternType_Grid)
 		Me.grpPatternType.Controls.Add(Me.pnlCrosshairSettings)
@@ -467,7 +466,7 @@ Partial Class frmMain
 		Me.tbxStatus.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxStatus.BackColor = System.Drawing.Color.Crimson
+		Me.tbxStatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
 		Me.tbxStatus.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.tbxStatus.ForeColor = System.Drawing.Color.White
 		Me.tbxStatus.Location = New System.Drawing.Point(12, 13)
@@ -543,7 +542,7 @@ Partial Class frmMain
 		'lblMarkerColorPreview
 		'
 		Me.lblMarkerColorPreview.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.lblMarkerColorPreview.BackColor = System.Drawing.Color.Crimson
+		Me.lblMarkerColorPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
 		Me.lblMarkerColorPreview.ForeColor = System.Drawing.Color.White
 		Me.lblMarkerColorPreview.Location = New System.Drawing.Point(173, 24)
 		Me.lblMarkerColorPreview.Name = "lblMarkerColorPreview"
@@ -576,7 +575,7 @@ Partial Class frmMain
 		'
 		Me.pnlHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.pnlHeader.BackColor = System.Drawing.Color.Crimson
+		Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
 		Me.pnlHeader.Controls.Add(Me.lblAppVersion)
 		Me.pnlHeader.Controls.Add(Me.lblAppTitle)
 		Me.pnlHeader.Controls.Add(Me.picAppIcon)
@@ -619,7 +618,7 @@ Partial Class frmMain
 		'btnExit
 		'
 		Me.btnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnExit.BackColor = System.Drawing.Color.DarkOrange
+		Me.btnExit.BackColor = System.Drawing.Color.OrangeRed
 		Me.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.Yellow
 		Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnExit.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -639,7 +638,7 @@ Partial Class frmMain
 		'
 		Me.pnlFooter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.pnlFooter.BackColor = System.Drawing.Color.Crimson
+		Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
 		Me.pnlFooter.Controls.Add(Me.tbxStatus)
 		Me.pnlFooter.Location = New System.Drawing.Point(0, 646)
 		Me.pnlFooter.Name = "pnlFooter"
@@ -650,7 +649,7 @@ Partial Class frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer), CType(CType(250, Byte), Integer))
+		Me.BackColor = System.Drawing.Color.FloralWhite
 		Me.ClientSize = New System.Drawing.Size(460, 716)
 		Me.Controls.Add(Me.pnlFooter)
 		Me.Controls.Add(Me.btnExit)

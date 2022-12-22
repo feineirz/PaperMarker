@@ -224,7 +224,10 @@
 
         Dim dlgColorPicker As New ColorDialog
         If dlgColorPicker.ShowDialog = DialogResult.OK Then
+            pnlHeader.BackColor = dlgColorPicker.Color
             lblMarkerColorPreview.BackColor = dlgColorPicker.Color
+            tbxStatus.BackColor = dlgColorPicker.Color
+            pnlFooter.BackColor = dlgColorPicker.Color
         End If
 
     End Sub
