@@ -69,6 +69,7 @@ Partial Class frmMain
 		Me.picAppIcon = New System.Windows.Forms.PictureBox()
 		Me.btnExit = New System.Windows.Forms.Button()
 		Me.pnlFooter = New System.Windows.Forms.Panel()
+		Me.lblCredit = New System.Windows.Forms.Label()
 		Me.grpPatternType.SuspendLayout()
 		Me.pnlGridSettings.SuspendLayout()
 		CType(Me.numGridSpace, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -90,7 +91,7 @@ Partial Class frmMain
 		'
 		Me.btnPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.btnPrint.BackColor = System.Drawing.Color.Purple
-		Me.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.Red
+		Me.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.Indigo
 		Me.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnPrint.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnPrint.ForeColor = System.Drawing.Color.MintCream
@@ -576,6 +577,7 @@ Partial Class frmMain
 		Me.pnlHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+		Me.pnlHeader.Controls.Add(Me.lblCredit)
 		Me.pnlHeader.Controls.Add(Me.lblAppVersion)
 		Me.pnlHeader.Controls.Add(Me.lblAppTitle)
 		Me.pnlHeader.Controls.Add(Me.picAppIcon)
@@ -619,7 +621,7 @@ Partial Class frmMain
 		'
 		Me.btnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.btnExit.BackColor = System.Drawing.Color.OrangeRed
-		Me.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.Yellow
+		Me.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.Red
 		Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnExit.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnExit.ForeColor = System.Drawing.Color.MintCream
@@ -644,6 +646,16 @@ Partial Class frmMain
 		Me.pnlFooter.Name = "pnlFooter"
 		Me.pnlFooter.Size = New System.Drawing.Size(460, 70)
 		Me.pnlFooter.TabIndex = 8
+		'
+		'lblCredit
+		'
+		Me.lblCredit.AutoSize = True
+		Me.lblCredit.ForeColor = System.Drawing.Color.DarkGray
+		Me.lblCredit.Location = New System.Drawing.Point(62, 38)
+		Me.lblCredit.Name = "lblCredit"
+		Me.lblCredit.Size = New System.Drawing.Size(70, 15)
+		Me.lblCredit.TabIndex = 9
+		Me.lblCredit.Text = "feinz.net"
 		'
 		'frmMain
 		'
@@ -738,4 +750,5 @@ Partial Class frmMain
 	Friend WithEvents lblAppVersion As Label
 	Friend WithEvents btnExit As Button
 	Friend WithEvents pnlFooter As Panel
+	Friend WithEvents lblCredit As Label
 End Class
