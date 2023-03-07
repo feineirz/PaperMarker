@@ -59,10 +59,10 @@ Partial Class frmMain
 		Me.rdbLineStyle_Dotted = New System.Windows.Forms.RadioButton()
 		Me.rdbLineStyle_Dashed = New System.Windows.Forms.RadioButton()
 		Me.rdbLineStyle_Solid = New System.Windows.Forms.RadioButton()
-		Me.lblDebugInfo = New System.Windows.Forms.Label()
 		Me.lblMarkerColorPreview = New System.Windows.Forms.Label()
 		Me.btnPickMarkerColor = New System.Windows.Forms.Button()
 		Me.Label11 = New System.Windows.Forms.Label()
+		Me.lblDebugInfo = New System.Windows.Forms.Label()
 		Me.pnlHeader = New System.Windows.Forms.Panel()
 		Me.lblCredit = New System.Windows.Forms.Label()
 		Me.lblAppVersion = New System.Windows.Forms.Label()
@@ -90,7 +90,7 @@ Partial Class frmMain
 		'btnPrint
 		'
 		Me.btnPrint.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnPrint.BackColor = System.Drawing.Color.Purple
+		Me.btnPrint.BackColor = System.Drawing.Color.DarkMagenta
 		Me.btnPrint.FlatAppearance.BorderColor = System.Drawing.Color.Indigo
 		Me.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnPrint.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -467,7 +467,7 @@ Partial Class frmMain
 		Me.tbxStatus.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
 			Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxStatus.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+		Me.tbxStatus.BackColor = System.Drawing.Color.Indigo
 		Me.tbxStatus.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.tbxStatus.ForeColor = System.Drawing.Color.White
 		Me.tbxStatus.Location = New System.Drawing.Point(12, 13)
@@ -529,21 +529,10 @@ Partial Class frmMain
 		Me.rdbLineStyle_Solid.Text = "Solid"
 		Me.rdbLineStyle_Solid.UseVisualStyleBackColor = True
 		'
-		'lblDebugInfo
-		'
-		Me.lblDebugInfo.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblDebugInfo.ForeColor = System.Drawing.Color.DimGray
-		Me.lblDebugInfo.Location = New System.Drawing.Point(27, 588)
-		Me.lblDebugInfo.Name = "lblDebugInfo"
-		Me.lblDebugInfo.Size = New System.Drawing.Size(216, 55)
-		Me.lblDebugInfo.TabIndex = 3
-		Me.lblDebugInfo.Text = "Debug info"
-		Me.lblDebugInfo.Visible = False
-		'
 		'lblMarkerColorPreview
 		'
 		Me.lblMarkerColorPreview.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.lblMarkerColorPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+		Me.lblMarkerColorPreview.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
 		Me.lblMarkerColorPreview.ForeColor = System.Drawing.Color.White
 		Me.lblMarkerColorPreview.Location = New System.Drawing.Point(173, 24)
 		Me.lblMarkerColorPreview.Name = "lblMarkerColorPreview"
@@ -572,11 +561,22 @@ Partial Class frmMain
 		Me.Label11.TabIndex = 0
 		Me.Label11.Text = "Color"
 		'
+		'lblDebugInfo
+		'
+		Me.lblDebugInfo.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblDebugInfo.ForeColor = System.Drawing.Color.DimGray
+		Me.lblDebugInfo.Location = New System.Drawing.Point(27, 588)
+		Me.lblDebugInfo.Name = "lblDebugInfo"
+		Me.lblDebugInfo.Size = New System.Drawing.Size(216, 55)
+		Me.lblDebugInfo.TabIndex = 3
+		Me.lblDebugInfo.Text = "Debug info"
+		Me.lblDebugInfo.Visible = False
+		'
 		'pnlHeader
 		'
 		Me.pnlHeader.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.pnlHeader.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+		Me.pnlHeader.BackColor = System.Drawing.Color.Indigo
 		Me.pnlHeader.Controls.Add(Me.lblCredit)
 		Me.pnlHeader.Controls.Add(Me.lblAppVersion)
 		Me.pnlHeader.Controls.Add(Me.lblAppTitle)
@@ -630,8 +630,8 @@ Partial Class frmMain
 		'btnExit
 		'
 		Me.btnExit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnExit.BackColor = System.Drawing.Color.OrangeRed
-		Me.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.Red
+		Me.btnExit.BackColor = System.Drawing.Color.Crimson
+		Me.btnExit.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed
 		Me.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat
 		Me.btnExit.Font = New System.Drawing.Font("Consolas", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnExit.ForeColor = System.Drawing.Color.MintCream
@@ -650,7 +650,7 @@ Partial Class frmMain
 		'
 		Me.pnlFooter.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.pnlFooter.BackColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
+		Me.pnlFooter.BackColor = System.Drawing.Color.Indigo
 		Me.pnlFooter.Controls.Add(Me.tbxStatus)
 		Me.pnlFooter.Location = New System.Drawing.Point(0, 646)
 		Me.pnlFooter.Name = "pnlFooter"
